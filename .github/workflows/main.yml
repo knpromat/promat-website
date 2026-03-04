@@ -32,7 +32,7 @@ jobs:
       - name: Connect to Server
         run: |
           mkdir server
-          sshfs -o password_stdin ${{ vars.URL  }}:/public_html server/ <<< echo "${{ secrets.UNIX_PASSWORD }}"
+          sshfs -o password_stdin ${{ vars.URL  }}:/public_html server/ <<< '${{ secrets.UNIX_PASSWORD }}'
 
       - name: Kill VPN
         if: always()
