@@ -37,8 +37,7 @@ jobs:
 
       - name: Rsync with Password
         run: |
-          ls
-          sshpass -p "${{ secrets.UNIX_PASSWORD }}" rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./public promat@web.agh.edu.pl:/public_html
+          sshpass -p "${{ secrets.UNIX_PASSWORD }}" rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./public/ promat@web.agh.edu.pl:/public_html
 
       - name: Kill VPN
         if: always()
