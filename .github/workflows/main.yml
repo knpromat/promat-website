@@ -16,8 +16,8 @@ jobs:
       - name: Install OpenVPN
         run: sudo apt-get install -y openvpn
 
-      - name: Install sshfs
-        run: sudo apt-get install -y sshfs
+      - name: Install rsync
+        run: sudo apt-get install -y rsync
 
       - name: Setup VPN Config
         run: |
@@ -28,12 +28,17 @@ jobs:
         run: |
           sudo openvpn --config config.ovpn --daemon
           sleep 10
-          ping -c 4 2001:6d8:10:1127::6246
-          
-      - name: Connect to Server
+          # Test connection using local address
+          ping -c 4 2001:6d8:10:1127::6246 
+
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Rsync with Password
         run: |
-          sudo mkdir server
-          sudo sshfs -o password_stdin ${{ vars.URL  }}:/public_html server/ <<< '${{ secrets.UNIX_PASSWORD }}'
+          ls
+          sshpass -p "${{ secrets.UNIX_PASSWORD }}" rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./public promat@web.agh.edu.pl:/public_html
 
       - name: Kill VPN
         if: always()
