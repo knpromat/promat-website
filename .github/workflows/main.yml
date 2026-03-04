@@ -17,10 +17,10 @@ jobs:
         with:
           PING_URL: '127.0.0.1'
           FILE_OVPN: '.github/vpn/config.ovpn'
-          TLS_KEY: ${{ secrets.TLS_KEY }}
+          TLS_KEY: ${{ secrets.TLS_CERT }}
         env:
           CA_CRT: ${{ secrets.CA_CRT}}
-          USER_CRT: ${{ secrets.USER_CRT }}
+          USER_CRT: ${{ secrets.USER_CERT }}
           USER_KEY: ${{ secrets.USER_KEY }}
       - name: Check Connect VPN
         run: echo ${{ steps.connect_vpn.outputs.STATUS }}
