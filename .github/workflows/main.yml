@@ -10,8 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Update repos
+        run: sudo apt-get update
+
       - name: Install OpenVPN
-        run: sudo apt-get update && sudo apt-get install -y openvpn
+        run: sudo apt-get install -y openvpn
+
+      - name: Install sshfs
+        run: sudo apt-get install -y sshfs
 
       - name: Setup VPN Config
         run: |
@@ -21,9 +27,12 @@ jobs:
       - name: Connect to VPN
         run: |
           sudo openvpn --config config.ovpn --daemon
-
           sleep 10
-          #ping -c 4 10.x.x.x test connection
+          
+      - name: Connect to Server
+        run: |
+          mkdir server
+          sshfs -o password_stdin ${{ vars.URL  }}:/public_html server/ <<< echo "${{ secrets.UNIX_PASSWORD }}"
 
       - name: Kill VPN
         if: always()
