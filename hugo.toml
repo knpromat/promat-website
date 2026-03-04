@@ -1,0 +1,4 @@
+baseURL = 'https://www.promat.agh.edu.pl/'
+languageCode = 'pl-PL'
+title = 'Promat'
+theme = 'hugo-scroll'
