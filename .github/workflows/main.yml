@@ -28,6 +28,7 @@ jobs:
         run: |
           sudo openvpn --config config.ovpn --daemon
           sleep 10
+          ping -c 4 2001:6d8:10:1127::6246
           
       - name: Connect to Server
         run: |
