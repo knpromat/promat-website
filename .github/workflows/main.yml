@@ -2,28 +2,29 @@ name: Deploy to Server
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
-  connect-open-vpn:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Install Open VPN
-        run: sudo apt-get install openvpn
-      - name: Connect VPN
-        uses: golfzaptw/action-connect-ovpn@master
-        id: connect_vpn
-        with:
-          PING_URL: '127.0.0.1'
-          FILE_OVPN: '.github/vpn/config.ovpn'
-          TLS_KEY: ${{ secrets.TLS_CERT }}
-        env:
-          CA_CRT: ${{ secrets.CA_CRT}}
-          USER_CRT: ${{ secrets.USER_CERT }}
-          USER_KEY: ${{ secrets.USER_KEY }}
-      - name: Check Connect VPN
-        run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-      - name: kill vpn
+      - uses: actions/checkout@v4
+
+      - name: Install OpenVPN
+        run: sudo apt-get update && sudo apt-get install -y openvpn
+
+      - name: Setup VPN Config
+        run: |
+          # Make file from secrets
+          echo "${{ secrets.VPN_CONFIG }}" > config.ovpn
+
+      - name: Connect to VPN
+        run: |
+          sudo openvpn --config config.ovpn --daemon
+
+          sleep 10
+          #ping -c 4 10.x.x.x test connection
+
+      - name: Kill VPN
         if: always()
         run: sudo killall openvpn
