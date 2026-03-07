@@ -78,3 +78,9 @@ enableEmoji = true
         value = "github.com/knpromat"
         url = "https://github.com/knpromat"
         icon = "fa-brands fa-github"
+    
+    [[params.contacts]]
+        label = "Linkedin"
+        value = "linkedin.com/company/promat-agh"
+        url = "https://linkedin.com/company/promat-agh"
+        icon = "fa-brands fa-linkedin"
