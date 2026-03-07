@@ -1,3 +1,5 @@
 ---
-header_headline: "Promat"
+header_logo: "logo.png"
+
+header_use_video: true
 ---
