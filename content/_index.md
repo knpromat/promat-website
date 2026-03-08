@@ -1,5 +1,5 @@
 ---
-header_logo: "logo.png"
+header_logo: "logo-biale.svg"
 
 header_use_video: true
 
