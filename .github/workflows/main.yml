@@ -11,13 +11,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update repos
-        run: sudo apt-get update
+        run: sudo apt-get update -y
 
-      - name: Install OpenVPN
-        run: sudo apt-get install -y openvpn
-
-      - name: Install rsync
-        run: sudo apt-get install -y rsync
+      - name: Install OpenVPN, rsync and sshpass
+        run: sudo apt-get install -y openvpn rsync sshpass
 
       - name: Setup VPN Config
         run: |
@@ -30,10 +27,6 @@ jobs:
           sleep 10
           # Test connection using local address
           ping -c 4 2001:6d8:10:1127::6246 
-
-
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
 
       - name: Rsync with Password
         run: |
