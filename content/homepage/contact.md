@@ -5,5 +5,3 @@ header_menu: true
 ---
 
 {{<contact_list>}}
-
-Mamy jakieś inne socjale?

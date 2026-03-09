@@ -84,3 +84,15 @@ enableEmoji = true
         value = "linkedin.com/company/promat-agh"
         url = "https://linkedin.com/company/promat-agh"
         icon = "fa-brands fa-linkedin"
+
+    [[params.contacts]]
+        label = "Facebook"
+        value = "facebook.com/KNPROMATAGH/"
+        url = "https://www.facebook.com/KNPROMATAGH/"
+        icon = "fa-brands fa-facebook"
+
+    [[params.contacts]]
+        label = "Instagram"
+        value = "instagram.com/kn_promat_agh/"
+        url = "https://www.instagram.com/kn_promat_agh/"
+        icon = "fa-brands fa-linkedin"
