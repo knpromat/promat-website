@@ -1,17 +1,9 @@
-<style>
-  /* Most browsers don't have it for some reason */
-  @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+{{ $css1 := resources.Get "css/custom.css" }} {{ $css2 := resources.Get
+"css/posts.css" }} {{ $styleBundle := slice $css1 $css2 | resources.Concat
+"css/bundle.css" }} {{ $secureBundle := $styleBundle | minify | fingerprint }}
 
-  #blog-logo {
-    max-height: 300px;
-    max-width: 90vw;
-  }
-
-  :root {
-    --cover-text-color: var(--section-light-bg-color);
-    --highlight: #056d3c;
-    --sticky-menu-text-color: #056d3c;
-
-    --section-dark-bg-color: #951439;
-  }
-</style>
+<link
+  rel="stylesheet"
+  href="{{ $secureBundle.RelPermalink }}"
+  integrity="{{ $secureBundle.Data.Integrity }}"
+/>
