@@ -15,3 +15,5 @@ Zamiast korzystać z gotowych, drogich i zamkniętych rozwiązań, bierzemy spra
 - Innowacyjność w skali globalnej: Połączenie wyjątkowych właściwości mechanicznych kompozytów z możliwością tworzenia skomplikowanych geometrii za pomocą druku 3D to obecnie jeden z najbardziej nowatorskich frontów badawczych na świecie.
 - Wypełniamy rynkową lukę: Druk 3D kompozytów to wciąż wschodząca dziedzina – na rynku dominuje zaledwie jeden komercyjny system do druku ciągłym włóknem węglowym, który jest mocno ograniczony. Tworząc własny (in-house) filament, zyskujemy pełną kontrolę nad procesem.
 - Od prototypów do prawdziwych części: Naszym celem jest znaczna poprawa właściwości mechanicznych wydruków. Chcemy tworzyć elementy o tak wysokiej wytrzymałości, by mogły służyć jako w pełni funkcjonalne części, a nie tylko modele pokazowe.
+
+{{< link-as-button href="/projects" >}}Zobacz nasze inne projekty{{</ link-as-button >}}

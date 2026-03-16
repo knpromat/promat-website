@@ -13,3 +13,33 @@
 
   --section-dark-bg-color: #951439;
 }
+
+.btn-link {
+  display: inline-block;
+  font-weight: 500;
+  padding: 0.5em 1em;
+  background-color: var(--section-dark-bg-color);
+  color: var(--section-light-bg-color);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+div.dark .btn-link {
+  background-color: var(--section-light-bg-color);
+  color: var(--section-dark-bg-color);
+}
+
+div.dark .btn-link:hover {
+  background-color: #e3dcd1;
+  color: var(--section-dark-bg-color);
+}
+
+.btn-link:hover {
+  background-color: #76132f;
+  color: var(--section-light-bg-color);
+}
+
+.btn-link:hover .fa-arrow-right {
+  transform: translateX(5px);
+}
