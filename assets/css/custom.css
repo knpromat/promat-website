@@ -14,3 +14,16 @@
 
   --section-dark-bg-color: #951439;
 }
+
+.profile-card {
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-card img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
