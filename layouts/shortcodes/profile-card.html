@@ -8,7 +8,7 @@
 
 <div class="profile-card">
     {{ if $image }}
-        {{ with $image.Process "resize 150x150 webp" }}
+        {{ with $image.Process "resize 300x300 webp" }}
             <img class="profile-card-avatar" src="{{ .RelPermalink }}" alt="{{ $.Get "name" }}">
         {{ end }}
     {{ else }}
