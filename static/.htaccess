@@ -42,4 +42,15 @@
     </FilesMatch>
 </IfModule>
 
+<IfModule mod_rewrite.c>
+    # 1. Odpalamy silnik przepisywania
+    RewriteEngine On
+
+    # 2. Sprawdzamy, czy ktoś wszedł przez www (NC oznacza non-case sensitive - ignoruje wielkość liter)
+    RewriteCond %{HTTP_HOST} ^www\.promat\.agh\.edu\.pl$ [NC]
+
+    # 3. Przekierowujemy wszystko na wersję bez www (R=301 to trwałe przekierowanie, L kończy wykonywanie reguł)
+    RewriteRule ^(.*)$ https://promat.agh.edu.pl/$1 [R=301,L]
+</IfModule>
+
 ErrorDocument 404 /404.html
