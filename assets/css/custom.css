@@ -25,6 +25,10 @@
   border-radius: 10px;
 }
 
+#aktualności {
+  max-width: 1000px;
+}
+
 div.dark .btn-link {
   background-color: var(--section-light-bg-color);
   color: var(--section-dark-bg-color);
@@ -43,3 +47,4 @@ div.dark .btn-link:hover {
 .btn-link:hover .fa-arrow-right {
   transform: translateX(5px);
 }
+

@@ -1,0 +1,22 @@
+{{ $limit := .Get "limit" | default 2 }} {{ $posts := where .Site.RegularPages
+"Section" "posts" }}
+<div class="posts-list">
+  {{ range first $limit $posts }}
+  <article class="post-mini page">
+    {{ $img := .Resources.Get "main_image.jpg" }} {{ with $img }} {{ with
+    .Process "fill center 400x200 webp" }}
+    <img
+      src="{{ .RelPermalink }}"
+      width="{{ .Width }}"
+      height="{{ .Height }}"
+    />
+    {{ end }} {{ end }}
+
+    <p class="date">
+      <i class="fa-regular fa-calendar"></i> {{ .Date.Format "2-1-2006" }}
+    </p>
+    <p>{{ .Summary }}</p>
+    <a href="{{ .Permalink }}">Czytaj więcej -></a>
+  </article>
+  {{ end }}
+</div>

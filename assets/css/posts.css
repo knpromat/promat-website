@@ -1,6 +1,7 @@
 .posts-list {
-  display: flex;
+  width: auto;
   max-width: 80vw;
+  display: flex;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -14,6 +15,8 @@
 }
 
 .post-mini {
+  flex-shrink: 1;
+  height: 394px;
   position: relative;
   border: 2px solid;
   width: 400px;
@@ -24,12 +27,18 @@
   padding: 20px;
 }
 
+.post-mini p {
+  font-size: 16px;
+}
+
 .post-mini img {
+  display: inline;
   object-fit: cover;
   margin-top: -20px;
   margin-left: -20px;
   margin-right: -20px;
   width: calc(100% + 40px);
+  max-width: none;
 }
 
 .post-mini p {
@@ -40,11 +49,10 @@
 }
 
 .post-mini a {
-  font-size: smaller;
+  font-size: 16px;
 }
 
-.date {
+.post-mini .date {
   margin-top: 0px;
   color: grey;
-  font-size: smaller;
 }
