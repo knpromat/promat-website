@@ -1,0 +1,19 @@
+{{ $imagePath := .Get "avatar" }}
+
+{{/* 1. Explicitly grab the 'homepage' bundle which actually owns the images folder */}}
+{{ $parentBundle := site.GetPage "/homepage" }}
+
+{{/* 2. Ask the parent bundle for the image instead of the current file */}}
+{{ $image := $parentBundle.Resources.GetMatch $imagePath }}
+
+<div class="profile-card">
+    {{ if $image }}
+        {{ with $image.Process "resize 300x300 webp" }}
+            <img class="profile-card-avatar" src="{{ .RelPermalink }}" alt="{{ $.Get "name" }}">
+        {{ end }}
+    {{ else }}
+        <p style="color: red;">Image not found! Searched for: {{ $imagePath }}</p>
+    {{ end }}
+    <h2 class="profile-card-name">{{ .Get "name" }}</h2>
+    <p class="profile-card-title">{{ .Get "title" }}</p>
+</div>

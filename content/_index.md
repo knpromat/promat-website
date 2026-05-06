@@ -1,5 +1,5 @@
 ---
-header_logo: "PROMAT-logo-white.png"
+header_logo: "PROMAT-removebg-white.svg"
 
 header_use_video: true
 

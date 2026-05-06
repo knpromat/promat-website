@@ -3,6 +3,7 @@
 
 #blog-logo {
   max-height: 300px;
+  margin-bottom: 15px;
   max-width: 90vw;
 }
 
@@ -48,3 +49,34 @@ div.dark .btn-link:hover {
   transform: translateX(5px);
 }
 
+.profile-card {
+  padding: 20px;
+  text-align: center;
+  width: 400px;
+}
+
+.profile-card img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+
+#zarząd .post-content {
+  width: 900px;
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+#zarząd {
+  max-width: fit-content !important;
+}
+
+#zarząd .post-content > p {
+  display: none;
+}
