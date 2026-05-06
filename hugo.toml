@@ -6,6 +6,9 @@ theme = 'hugo-scroll'
 # enable emoji processing in Markdown (valid only for pure markdown content)
 enableEmoji = true
 
+# Exclude .git folder from posts submodule
+ignoreFiles = ['\.git']
+
 # Theme-specific variables `.Site.Params.myParamName`
 [params]
 
