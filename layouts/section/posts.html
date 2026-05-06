@@ -1,14 +1,23 @@
 {{ define "main" }}
 <main class="content page-template page-{{ .Slug }}">
-  <h1 class="post-title">{{ .Title }}</h1>
+  <h1 class="title">{{ .Title }}</h1>
 
   <div class="posts-list">
     {{ range .Pages }}
-    <article class="post page">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-      <p>{{ .Date.Format "2-1-2006" }}</p>
-      <p>{{ .Summary }}</p>
-      <a href="{{ .Permalink }}">Read more →</a>
+    <article class="post-mini page">
+      {{ $img := .Resources.Get "main_image.jpg" }} {{ with $img }} {{ with
+      .Process "fill center 400x200 webp" }}
+      <img
+        src="{{ .RelPermalink }}"
+        width="{{ .Width }}"
+        height="{{ .Height }}"
+      />
+      {{ end }} {{ end }}
+      <p class="date">
+        <i class="fa-regular fa-calendar"></i> {{ .Date.Format "2-1-2006" }}
+      </p>
+      <p>{{ .Plain | truncate 120 }}</p>
+      <a href="{{ .Permalink }}">Czytaj więcej →</a>
     </article>
     {{ end }}
   </div>
