@@ -3,4 +3,4 @@
 	url = https://github.com/zjedi/hugo-scroll.git
 [submodule "content/posts"]
 	path = content/posts
-	url = https://github.com/knpromat/promat-website-posts.git
+	url = https://github.com/knpromat/promat-website-posts
