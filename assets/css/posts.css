@@ -1,0 +1,50 @@
+.posts-list {
+  display: flex;
+  max-width: 80vw;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.title {
+  padding-top: 0.5em;
+  position: relative;
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.post-mini {
+  position: relative;
+  border: 2px solid;
+  width: 400px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.post-mini img {
+  object-fit: cover;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  width: calc(100% + 40px);
+}
+
+.post-mini p {
+  max-height: 100px;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+.post-mini a {
+  font-size: smaller;
+}
+
+.date {
+  margin-top: 0px;
+  color: grey;
+  font-size: smaller;
+}
