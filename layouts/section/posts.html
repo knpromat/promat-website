@@ -16,7 +16,7 @@
       <p class="date">
         <i class="fa-regular fa-calendar"></i> {{ .Date.Format "2-1-2006" }}
       </p>
-      <p>{{ .Summary }}</p>
+      <p>{{ .Plain | truncate 120 }}</p>
       <a href="{{ .Permalink }}">Czytaj więcej →</a>
     </article>
     {{ end }}
