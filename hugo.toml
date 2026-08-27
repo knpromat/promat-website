@@ -1,5 +1,5 @@
 baseURL = 'https://www.promat.agh.edu.pl/'
-languageCode = 'pl-PL'
+locale = 'pl-PL'
 title = 'Promat'
 theme = 'hugo-scroll'
 
