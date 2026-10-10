@@ -19,6 +19,23 @@
   margin: 0 auto 1rem;
 }
 
+/* Heading row: title on the left, back button on the right,
+   aligned with the cards grid below. */
+.posts-header {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  padding: 0.5em 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.posts-header__title {
+  margin: 0;
+}
+
 /* Card: image stacked on top of text (vertical layout). */
 .post-mini {
   display: flex;
@@ -161,5 +178,9 @@
   .posts-list {
     grid-template-columns: 1fr;
     padding: 0 1rem;
+  }
+
+  .posts-header {
+    padding: 0.5em 1rem 0;
   }
 }

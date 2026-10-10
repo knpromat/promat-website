@@ -1,6 +1,12 @@
 {{ define "main" }}
 <main class="content page-template page-{{ .Slug }}">
-  <h1 class="title">{{ .Title }}</h1>
+  <div class="posts-header">
+    <h1 class="posts-header__title">{{ .Title }}</h1>
+    <a class="single-post__back" href="{{ "/" | relLangURL }}">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <span>Strona główna</span>
+    </a>
+  </div>
 
   <div class="posts-list">
     {{ range .Pages }}
