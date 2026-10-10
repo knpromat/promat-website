@@ -1,0 +1,195 @@
+/* Single post page — clean card layout that matches PROMAT branding. */
+
+.single-post {
+  background: var(--single-page-bg-color, #f2efe8);
+  color: var(--single-page-text-color, #3a4145);
+  padding: 2.5rem 1.5rem 4rem;
+  min-height: calc(100vh - 2em);
+}
+
+.single-post__inner {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Top navigation row */
+.single-post__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.single-post__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--sticky-menu-text-color, #056d3c);
+  padding: 0.4em 0.8em;
+  border-radius: 999px;
+  background: rgba(5, 109, 60, 0.08);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.single-post__back:hover {
+  background: rgba(5, 109, 60, 0.16);
+  color: #056d3c;
+}
+
+.single-post__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.4rem;
+  color: #7a7a7a;
+}
+
+.single-post__meta .dot {
+  opacity: 0.5;
+}
+
+/* Card */
+.single-post__card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.single-post__hero {
+  margin: 0;
+  line-height: 0;
+  background: linear-gradient(135deg, #951439, #056d3c);
+}
+
+.single-post__hero img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.single-post__body {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.single-post__title {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin: 0 0 0.5rem;
+  text-wrap: balance;
+}
+
+.single-post__rule {
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--section-dark-bg-color, #951439);
+  margin: 1rem 0 1.5rem;
+}
+
+/* Body text: FB posts are often one big block with single newlines —
+   preserve them so the text doesn't collapse into a wall. */
+.single-post__content {
+  font-size: 1.8rem;
+  line-height: 1.75;
+  word-break: break-word;
+}
+
+.single-post__content p {
+  white-space: pre-line;
+  margin: 0 0 1.1em;
+}
+
+.single-post__content p:first-child {
+  font-size: 1.15em;
+}
+
+.single-post__content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 12px;
+  white-space: normal;
+}
+
+.single-post__content a {
+  color: #056d3c;
+  text-underline-offset: 3px;
+}
+
+/* Footer */
+.single-post__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.single-post__pn {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.single-post__pn-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--section-dark-bg-color, #951439);
+}
+
+.single-post__pn-link:hover {
+  text-decoration: underline;
+}
+
+/* "Read more" section reuses .post-mini cards */
+.single-post__more {
+  margin-top: 3rem;
+}
+
+.single-post__more-title {
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.posts-list--more {
+  max-width: none;
+  gap: 0 20px;
+  justify-content: flex-start;
+}
+
+.posts-list--more .post-mini {
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (max-width: 640px) {
+  .single-post {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .single-post__topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .single-post__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

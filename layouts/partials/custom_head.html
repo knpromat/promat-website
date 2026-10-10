@@ -1,6 +1,8 @@
-{{ $css1 := resources.Get "css/custom.css" }} {{ $css2 := resources.Get
-"css/posts.css" }} {{ $styleBundle := slice $css1 $css2 | resources.Concat
-"css/bundle.css" }} {{ $secureBundle := $styleBundle | minify | fingerprint }}
+{{ $css1 := resources.Get "css/custom.css" }}
+{{ $css2 := resources.Get "css/posts.css" }}
+{{ $css3 := resources.Get "css/single-post.css" }}
+{{ $styleBundle := slice $css1 $css2 $css3 | resources.Concat "css/bundle.css" }}
+{{ $secureBundle := $styleBundle | minify | fingerprint }}
 
 <link
   rel="stylesheet"

@@ -1,9 +1,14 @@
+/* Post tiles — vertical cards matching the single-post style. */
+
 .posts-list {
   width: auto;
-  max-width: 80vw;
-  display: flex;
+  max-width: 1100px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
 .title {
@@ -11,48 +16,150 @@
   position: relative;
   width: 80%;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 1rem;
 }
 
+/* Card: image stacked on top of text (vertical layout). */
 .post-mini {
-  flex-shrink: 1;
-  height: 394px;
-  position: relative;
-  border: 2px solid;
-  width: 400px;
-  margin: 20px auto;
-  margin-bottom: 10px;
-  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #fff;
+  color: #3a4145;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 18px;
   overflow: hidden;
-  padding: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
-.post-mini p {
-  font-size: 16px;
+.post-mini:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.13);
 }
 
-.post-mini img {
-  display: inline;
+/* Media: upright 4:3 frame, never a wide panorama strip. */
+.post-mini__media {
+  display: block;
+  line-height: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, #951439, #056d3c);
+}
+
+.post-mini__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-top: -20px;
-  margin-left: -20px;
-  margin-right: -20px;
-  width: calc(100% + 40px);
+  margin: 0;
   max-width: none;
+  transition: transform 0.3s ease;
 }
 
-.post-mini p {
-  max-height: 100px;
-  text-overflow: ellipsis;
+.post-mini:hover .post-mini__media img {
+  transform: scale(1.03);
+}
+
+.post-mini__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Body */
+.post-mini__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.6rem 1.8rem 1.8rem;
+  flex: 1;
+}
+
+.post-mini__date {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #056d3c;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.post-mini__date i {
+  margin-right: 0.4rem;
+}
+
+.post-mini__title {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.3;
+  text-wrap: balance;
   overflow-wrap: break-word;
+}
+
+.post-mini__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-mini__title a:hover {
+  color: #951439;
+}
+
+.post-mini__excerpt {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #5a6266;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.post-mini a {
-  font-size: 16px;
+.post-mini__link {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #951439;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.post-mini__link span {
+  transition: transform 0.2s ease;
+}
+
+.post-mini__link:hover span {
+  transform: translateX(4px);
+}
+
+/* Legacy selectors kept harmless (old markup no longer emitted). */
+.post-mini p {
+  font-size: 1.5rem;
 }
 
 .post-mini .date {
-  margin-top: 0px;
-  color: grey;
+  color: #056d3c;
+}
+
+@media (max-width: 640px) {
+  .posts-list {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
 }
