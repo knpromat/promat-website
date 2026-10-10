@@ -48,10 +48,10 @@ def crate_folder_and_image(id: int | str, image_url: str | None):
 def parse_request(j):
     for post in j["data"]:
         if exists(post["id"]):
-            print(f"Skipping post {j['id']}, because it already exists")
+            print(f"Skipping post {post['id']}, because it already exists")
             continue
         if "message" not in post:
-            print(f"Skipping post {j}, because it doesn't have message")
+            print(f"Skipping post {post}, because it doesn't have message")
             continue
         summary = post["message"][:80]
         if "full_picture" in post:
