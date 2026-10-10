@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{/* Derive a display title: FB-imported posts have no `title` front matter. */}}
+{{ $title := .Title }}
+{{ $rawTitle := "" }}
+{{ if not $title }}
+  {{ $lines := split .Plain "\n" }}
+  {{ range $lines }}
+    {{ $t := . | strings.TrimSpace }}
+    {{ if and (eq $rawTitle "") (ne $t "") (ne $t "header") }}
+      {{ $rawTitle = $t }}
+    {{ end }}
+  {{ end }}
+  {{ $title = $rawTitle | truncate 120 }}
+{{ end }}
+{{ if not $title }}{{ $title = printf "Aktualność z dnia %s" (.Date.Format "02.01.2006") }}{{ end }}
+
+{{ $img := .Resources.Get "main_image.jpg" }}
+
+{{/* Remove the leading ![header](main_image.jpg) duplicate from the body —
+     we render it as a proper hero instead. */}}
+{{ $content := replaceRE `(?s)<img[^>]*>\s*` "" .Content 1 }}
+
+<main class="single-post">
+  <div class="single-post__inner">
+    <nav class="single-post__topbar">
+      <a class="single-post__back" href="{{ "/posts" | relLangURL }}">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <span>Wszystkie aktualności</span>
+      </a>
+      <p class="single-post__meta">
+        <span><i class="fa-regular fa-calendar" aria-hidden="true"></i>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time></span>
+        <span class="dot" aria-hidden="true">•</span>
+        <span><i class="fa-regular fa-clock" aria-hidden="true"></i> {{ .ReadingTime }} min czytania</span>
+      </p>
+    </nav>
+
+    <article class="single-post__card">
+      {{ with $img }}
+        {{ $hero := .Process "fill 1200x675 center webp q90 lanczos photo" }}
+        <figure class="single-post__hero">
+          <img src="{{ $hero.RelPermalink }}" width="{{ $hero.Width }}" height="{{ $hero.Height }}"
+            alt="{{ $title }}" fetchpriority="high" />
+        </figure>
+      {{ end }}
+
+      <div class="single-post__body">
+        <h1 class="single-post__title">{{ $title }}</h1>
+        <div class="single-post__rule" aria-hidden="true"></div>
+        <div class="single-post__content">
+          {{ $content | safeHTML }}
+        </div>
+
+        <footer class="single-post__footer">
+          <a class="btn-link" href="{{ "/posts" | relLangURL }}">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp; Wróć do aktualności
+          </a>
+          <div class="single-post__pn">
+            {{ with .PrevInSection }}
+              <a class="single-post__pn-link" href="{{ .RelPermalink }}" title="{{ or .Title .Plain }}">
+                ← Poprzedni
+              </a>
+            {{ end }}
+            {{ with .NextInSection }}
+              <a class="single-post__pn-link" href="{{ .RelPermalink }}" title="{{ or .Title .Plain }}">
+                Następny →
+              </a>
+            {{ end }}
+          </div>
+        </footer>
+      </div>
+    </article>
+
+
+  </div>
+</main>
+{{ end }}

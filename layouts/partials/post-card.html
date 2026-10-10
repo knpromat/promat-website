@@ -1,0 +1,45 @@
+<article class="post-mini">
+  <a class="post-mini__media" href="{{ .RelPermalink }}" aria-label="{{ .Title | default (.Plain | truncate 60) }}" tabindex="-1">
+    {{ $img := .Resources.Get "main_image.jpg" }}
+    {{ with $img }}
+      {{ with .Process "fill 800x600 center webp q80 lanczos photo" }}
+        <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}"
+          alt="" loading="lazy" />
+      {{ end }}
+    {{ else }}
+      <div class="post-mini__placeholder" aria-hidden="true">
+        <i class="fa-regular fa-newspaper"></i>
+      </div>
+    {{ end }}
+  </a>
+  <div class="post-mini__body">
+    {{/* FB-imported posts have no `title` — derive one from content. */}}
+    {{ $title := .Title }}
+    {{ $rawTitle := "" }}
+    {{ if not $title }}
+      {{ $lines := split .Plain "\n" }}
+      {{ range $lines }}
+        {{ $t := . | strings.TrimSpace }}
+        {{ if and (eq $rawTitle "") (ne $t "") (ne $t "header") }}
+          {{ $rawTitle = $t }}
+        {{ end }}
+      {{ end }}
+      {{ $title = $rawTitle | truncate 80 }}
+    {{ end }}
+
+    <p class="post-mini__date">
+      <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+    </p>
+
+    {{ with $title }}<h3 class="post-mini__title"><a href="{{ $.RelPermalink }}">{{ . }}</a></h3>{{ end }}
+
+    {{ $excerptSource := .Plain }}
+    {{ if $rawTitle }}
+      {{ $excerptSource = strings.TrimSpace (strings.Replace $excerptSource $rawTitle "" 1) }}
+    {{ end }}
+    {{ with $excerptSource }}<p class="post-mini__excerpt">{{ . | truncate 130 }}</p>{{ end }}
+
+    <a class="post-mini__link" href="{{ .RelPermalink }}">Czytaj więcej <span aria-hidden="true">→</span></a>
+  </div>
+</article>
