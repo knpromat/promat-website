@@ -59,7 +59,4 @@ APP_ID=<your_app_ID> \
 ```
 
 8. On GitHub, navigate: Settings -> Secrets and Variables -> Actions
-9. Update/create the following variables:
-    - `FB_APP_ID`
-    - `FB_APP_SECRET`
-    - `FB_PAGE_TOKEN`
+9. Update/create `PAGE_TOKEN` variable and assign it with a new token.
