@@ -1,0 +1,22 @@
+name: Update posts from FB
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+      timezone: 'Europe/Warsaw'
+
+jobs:
+  update-posts:
+    name: Download posts and push if needed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+      - name: Download new posts
+        run: |
+          ACCESS_TOKEN=${{ secrets.APP_TOKEN }} python scripts/download_posts.py
+      - name: Commit changes if needed.
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: Update FB Posts
