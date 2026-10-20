@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v7
       - name: Download new posts
         run: |
-          ACCESS_TOKEN=${{ secrets.APP_TOKEN }} python scripts/download_posts.py
+          ACCESS_TOKEN=${{ secrets.PAGE_TOKEN }} python scripts/download_posts.py
       - name: Commit changes if needed.
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
