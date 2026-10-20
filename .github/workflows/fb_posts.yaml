@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           token: ${{ secrets.FB_WORKFLOW_TOKEN }}
+          submodules: recursive
       - name: Download new posts
         run: |
           ACCESS_TOKEN=${{ secrets.PAGE_TOKEN }} python scripts/download_posts.py
