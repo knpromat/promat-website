@@ -60,3 +60,7 @@ APP_ID=<your_app_ID> \
 
 8. On GitHub, navigate: Settings -> Secrets and Variables -> Actions
 9. Update/create `PAGE_TOKEN` variable and assign it with a new token.
+
+> [!note]
+> If you want to remove a post from the website for any reason, do **not** delete the folder—it will just regenerate. Instead, clear its contents.
+> The script only checks whether the folder exists to determine if the post is already there.
