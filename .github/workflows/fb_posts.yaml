@@ -21,8 +21,9 @@ jobs:
           ACCESS_TOKEN=${{ secrets.PAGE_TOKEN }} python scripts/download_posts.py
       - name: Dirty hack
         run: mv content/posts ../
+      - run: stat ../posts/.git
       - name: Commit changes if needed.
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update FB Posts
-          repository: "posts"
+          repository: "../posts/"
