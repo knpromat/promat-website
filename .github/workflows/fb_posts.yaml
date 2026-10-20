@@ -23,4 +23,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Update FB Posts
-          repository: "promat-website/content/posts"
+          repository: "content/posts"
