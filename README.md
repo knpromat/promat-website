@@ -49,7 +49,7 @@ hugo server
     - Meta App: `<Your apps's name>`
     - User or Page: `User Token` (this actually doesn't matter)
     - Permissions: `pages_show_list`, `pages_read_engagement`, `pages_read_user_content`
-7. Download the [generations cript](./scripts/generate_app_token.sh) and run it like this:
+7. Download the [generation script](./scripts/generate_app_token.sh) and run it like this:
 
 ```sh
 APP_ID=<your_app_ID> \
