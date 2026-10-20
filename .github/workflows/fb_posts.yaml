@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.FB_WORKFLOW_TOKEN }}
       - name: Download new posts
         run: |
           ACCESS_TOKEN=${{ secrets.PAGE_TOKEN }} python scripts/download_posts.py
