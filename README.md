@@ -64,3 +64,20 @@ APP_ID=<your_app_ID> \
 > [!note]
 > If you want to remove a post from the website for any reason, do **not** delete the folder—it will just regenerate. Instead, clear its contents.
 > The script only checks whether the folder exists to determine if the post is already there.
+
+## Updating GitHub Personal Access Token
+
+> [!note]
+> The current token should work for a longer time, but in case a new one is needed here is the guide.
+
+> [!tip]
+> FB posts updater uses `FB_WORKFLOW_TOKEN` to interact with git for 2 reasons:
+> 1. To push to https://github.com/knpromat/proomat-website-posts repository (the default actions token might be insufficient)
+> 2. By default, commits pushed with the github-generated token do not trigger other actions. This is not what we want - we need to trigger deployment when new posts are pushed.
+
+1. On your profile go to Settings->Developer settings -> Personal Access Token -> Fine-grided token -> Generate token
+2. in repositories, choose "selected repositories" and add `promat-website` and `promat-website-posts`
+3. in permissions section add `Contents` permission
+4. Confirm and **copy the token**
+5. on this repo go to settings -> Secrets -> Actions
+6. Edit `FB_WORKFLOW_TOKEN` with the new token.
