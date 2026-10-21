@@ -32,3 +32,7 @@ jobs:
           git add .
           git commit -m "Update posts with CI"
           git push origin main
+      - name: Commit changes if needed.
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "Update FB Posts"
