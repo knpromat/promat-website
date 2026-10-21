@@ -16,6 +16,11 @@ jobs:
         with:
           token: ${{ secrets.FB_WORKFLOW_TOKEN }}
           submodules: recursive
+      - name: Check out latest posts repo
+        working-directory: content/posts
+        run: |
+          git checkout main
+          git pull
       - name: Download new posts
         run: |
           ACCESS_TOKEN=${{ secrets.PAGE_TOKEN }} python scripts/download_posts.py
@@ -26,4 +31,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Update posts with CI"
-          git push
+          git push origin main
